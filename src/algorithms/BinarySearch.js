@@ -23,7 +23,6 @@ export default function BinarySearch({ module }) {
   };
 
   function updateIndices(low, high, mid) {
-    console.log(low, high, mid);
     setLowIndex(low);
     setHighIndex(high);
     setMidIndex(mid);
