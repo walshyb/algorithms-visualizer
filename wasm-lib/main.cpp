@@ -10,11 +10,10 @@ extern "C" {
    *
    * @returns 0 if no errors
    */
-  int binary_search(int target, int* input, int inputSize, void (*updateLowIndex)(int), void (*updateHighIndex)(int), void (*updateMidIndex)(int) ) {
+  int binary_search(int target, int* input, int inputSize, void (*updateIndicies)(int,int,int)) {
     int low = 0;
     int high = inputSize - 1;
-    updateLowIndex(low);
-    updateHighIndex(high);
+    updateIndicies(low, high, -1);
 
     while (low <= high) {
       // sleep for 1 second in between iterations 
@@ -23,7 +22,7 @@ extern "C" {
 
       int mid = low + (high-low) / 2;
       int num = input[mid];
-      updateMidIndex(mid);
+      updateIndicies(low, high, mid);
 
       if (input[mid] == target) {
         return 0;
@@ -31,15 +30,15 @@ extern "C" {
 
       if (num < target) {
         low = mid + 1;
-        updateLowIndex(low);
       } else {
         high = mid - 1;
-        updateHighIndex(high);
       }
+
+      updateIndicies(low, high, mid);
     }
 
 
-    updateMidIndex(-1);
+    updateIndicies(low, high, -1);
     return -1;
   }
 }

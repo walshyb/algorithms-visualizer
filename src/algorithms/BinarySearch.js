@@ -6,9 +6,7 @@ export default function BinarySearch({ module }) {
     2, 4, 9, 10, 20, 50, 100, 500, 600, 800, 1000, 9000,
   ]);
   const [targetValue, setTargetValue] = useState(50);
-  const [lowIndexCallbackPtr, setLowIndexCallbackPtr] = useState(null);
-  const [highIndexCallbackPtr, setHighIndexCallbackPtr] = useState(null);
-  const [midIndexCallbackPtr, setMidIndexCallbackPtr] = useState(null);
+  const [updateIndicesPtr, setUpdateIndiciesPtr] = useState(null);
   const [lowIndex, setLowIndex] = useState(undefined);
   const [highIndex, setHighIndex] = useState(undefined);
   const [midIndex, setMidIndex] = useState(undefined);
@@ -24,18 +22,17 @@ export default function BinarySearch({ module }) {
     setInputValue(newInput);
   };
 
+  function updateIndices(low, high, mid) {
+    console.log(low, high, mid);
+    setLowIndex(low);
+    setHighIndex(high);
+    setMidIndex(mid);
+  }
+
   useEffect(() => {
     // Create and set pointer to setInputValue function
     if (module) {
-      const lowPtr = module.addFunction(setLowIndex, "vi");
-      setLowIndexCallbackPtr(lowPtr);
-      console.log(lowPtr);
-
-      const highPtr = module.addFunction(setHighIndex, "vi");
-      setHighIndexCallbackPtr(highPtr);
-
-      const midPtr = module.addFunction(setMidIndex, "vi");
-      setMidIndexCallbackPtr(midPtr);
+      setUpdateIndiciesPtr(module.addFunction(updateIndices, "viii"));
     }
   }, [module]); // Run once when the component mounts
 
@@ -50,9 +47,7 @@ export default function BinarySearch({ module }) {
         targetValue,
         inputPtr,
         inputValue.length,
-        lowIndexCallbackPtr,
-        highIndexCallbackPtr,
-        midIndexCallbackPtr,
+        updateIndicesPtr,
       );
       module._free(inputPtr);
     }
