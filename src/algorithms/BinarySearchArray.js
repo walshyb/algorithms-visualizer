@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import "./BinarySearch.scss";
+import "./BinarySearchArray.scss";
 
 export default function BinarySearch({ module }) {
   const [inputValue, setInputValue] = useState([

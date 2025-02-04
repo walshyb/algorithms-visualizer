@@ -1,5 +1,6 @@
 import "./App.scss";
-import BinarySearch from "./algorithms/BinarySearch";
+import BinarySearchArray from "./algorithms/BinarySearchArray";
+import BinarySearchTree from "./algorithms/BinarySearchTree";
 import React, { useState, useEffect } from "react";
 
 function App() {
@@ -13,7 +14,8 @@ function App() {
 
   return (
     <main>
-      <BinarySearch module={module} />
+      <BinarySearchArray module={module} />
+      <BinarySearchTree module={module} />
     </main>
   );
 }
