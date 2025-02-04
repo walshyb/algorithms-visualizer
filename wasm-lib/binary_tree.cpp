@@ -1,4 +1,8 @@
 #include <emscripten.h>
+#include "datastructures/tree.h"
+#include <iostream>
+
+using namespace std;
 
 extern "C" {
   /**
@@ -8,35 +12,28 @@ extern "C" {
    *
    * @returns 0 if no errors
    */
-  int binary_search_tree(int target, int* input, int inputSize, void (*updateIndicies)(int,int,int)) {
-    int low = 0;
-    int high = inputSize - 1;
-    updateIndicies(low, high, -1);
+  int binary_search_tree(int target, int* input, int inputSize, void (*updateSelectedNode)(int)) {
+    Tree *tree = new Tree(input, inputSize);
+    Node* current = tree->root;
 
-    while (low <= high) {
-      // sleep for 1 second in between iterations 
-      // so frontend can update and have changes visible to user
-      emscripten_sleep(1000);
+    while (current->children.size()) {
+      updateSelectedNode(current->index);
 
-      int mid = low + (high-low) / 2;
-      int num = input[mid];
-      updateIndicies(low, high, mid);
-
-      if (num == target) {
-        free(input);
+      if (current->value == target) {
+        delete tree;
         return 0;
-      } else if (num < target) {
-        low = mid + 1;
-      } else {
-        high = mid - 1;
       }
 
-      updateIndicies(low, high, mid);
+      if (current->value < target) {
+        current = current->children[1];
+      } else {
+        current = current->children[0];
+      }
+
     }
 
-
-    updateIndicies(low, high, -1);
-    free(input);
+    delete tree;
+    updateSelectedNode(-1);
     return -1;
   }
 }

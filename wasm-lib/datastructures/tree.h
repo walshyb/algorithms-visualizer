@@ -2,6 +2,7 @@
 
 class Tree {
   public:
-    Node root;
-    Tree();
+    Node* root;
+    Tree(int* input, int inputSizes);
+    ~Tree();
 };

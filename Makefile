@@ -1,7 +1,7 @@
 # Compiler settings
 CXX := em++
 CXXFLAGS := -std=c++17 --bind
-EM_FLAGS := -s EXPORTED_RUNTIME_METHODS=ccall,allocateUTF8,cwrap,addFunction -s EXPORTED_FUNCTIONS=_free,_binary_search_array -s EXPORT_NAME="'AlgorithmsModule'" -s ALLOW_TABLE_GROWTH=1 -s ASYNCIFY=1
+EM_FLAGS := -s EXPORTED_RUNTIME_METHODS=ccall,allocateUTF8,cwrap,addFunction -s EXPORTED_FUNCTIONS=_free,_binary_search_array,_binary_search_tree -s EXPORT_NAME="'AlgorithmsModule'" -s ALLOW_TABLE_GROWTH=1 -s ASYNCIFY=1
 
 # Source directory
 SRC_DIR := wasm-lib

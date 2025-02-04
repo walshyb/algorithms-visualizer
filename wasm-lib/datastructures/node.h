@@ -18,4 +18,9 @@ class Node {
       children.push_back(child);
     }
 
+    ~Node() {
+      for (Node* child : children) {
+        delete child;
+      }
+    }
 };
