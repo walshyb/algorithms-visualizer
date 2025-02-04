@@ -43,7 +43,7 @@ export default function BinarySearch({ module }) {
       await module.HEAP32.set(inputValue, inputPtr / 4);
       console.log(inputPtr);
 
-      await module._binary_search(
+      await module._binary_search_array(
         targetValue,
         inputPtr,
         inputValue.length,

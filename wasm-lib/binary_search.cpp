@@ -1,6 +1,4 @@
 #include <emscripten.h>
-#include <emscripten/bind.h>
-#include <iostream>
 
 extern "C" {
   /**
@@ -10,7 +8,7 @@ extern "C" {
    *
    * @returns 0 if no errors
    */
-  int binary_search(int target, int* input, int inputSize, void (*updateIndicies)(int,int,int)) {
+  int binary_search_array(int target, int* input, int inputSize, void (*updateIndicies)(int,int,int)) {
     int low = 0;
     int high = inputSize - 1;
     updateIndicies(low, high, -1);
