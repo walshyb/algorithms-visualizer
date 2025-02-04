@@ -1,6 +1,6 @@
 #include <emscripten.h>
 #include <emscripten/bind.h>
-#include <unistd.h>
+#include <iostream>
 
 extern "C" {
   /**
@@ -24,11 +24,10 @@ extern "C" {
       int num = input[mid];
       updateIndicies(low, high, mid);
 
-      if (input[mid] == target) {
+      if (num == target) {
+        free(input);
         return 0;
-      }
-
-      if (num < target) {
+      } else if (num < target) {
         low = mid + 1;
       } else {
         high = mid - 1;
@@ -39,6 +38,7 @@ extern "C" {
 
 
     updateIndicies(low, high, -1);
+    free(input);
     return -1;
   }
 }

@@ -37,19 +37,19 @@ export default function BinarySearch({ module }) {
   }, [module]); // Run once when the component mounts
 
   // On 'run' click, call binary search
-  const run = () => {
+  const run = async () => {
     if (module) {
       // Allocate space for the array. 4 is the size, in bytes, of an integer
-      const inputPtr = window._malloc(4 * inputValue.length);
-      module.HEAP32.set(inputValue, inputPtr / 4);
+      const inputPtr = await window._malloc(4 * inputValue.length);
+      await module.HEAP32.set(inputValue, inputPtr / 4);
+      console.log(inputPtr);
 
-      module._binary_search(
+      await module._binary_search(
         targetValue,
         inputPtr,
         inputValue.length,
         updateIndicesPtr,
       );
-      module._free(inputPtr);
     }
   };
 
