@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import Inputs from "../Inputs";
 import "./BinarySearchArray.scss";
 
 export default function BinarySearch({ module }) {
@@ -56,21 +57,11 @@ export default function BinarySearch({ module }) {
     <div className="binary-search">
       <h2>Binary Search Array</h2>
 
-      <label htmlFor="input">Input: </label>
-      <input
-        type="text"
-        name="input"
-        value={inputValue}
-        onChange={handleInputChange}
-      />
-
-      <br />
-      <label htmlFor="target">Target: </label>
-      <input
-        type="text"
-        name="target"
-        value={targetValue}
-        onChange={(e) => setTargetValue(e.target.value)}
+      <Inputs
+        handleInputChange={handleInputChange}
+        inputValue={inputValue}
+        handleTargetChange={setTargetValue}
+        targetValue={targetValue}
       />
 
       <ul className="array binary-search">
