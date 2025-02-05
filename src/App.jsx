@@ -14,8 +14,8 @@ function App() {
 
   return (
     <main>
-      <BinarySearchArray module={module} />
-      <BinarySearchTree module={module} />
+      {module && <BinarySearchArray module={module} />}
+      {module && <BinarySearchTree module={module} />}
     </main>
   );
 }
