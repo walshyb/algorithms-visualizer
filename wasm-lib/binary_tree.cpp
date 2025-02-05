@@ -18,6 +18,7 @@ extern "C" {
 
     while (current->children.size()) {
       updateSelectedNode(current->index);
+      cout << current->value <<endl;
 
       if (current->value == target) {
         delete tree;

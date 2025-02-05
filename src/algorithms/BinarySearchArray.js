@@ -31,16 +31,18 @@ export default function BinarySearch({ module }) {
 
   useEffect(() => {
     // Create and set pointer to setInputValue function
-    if (module) {
+    // TODO remove some of this defensive checking?
+    if (module && module.addFunction && !updateIndicesPtr) {
+      console.log("running");
       setUpdateIndiciesPtr(module.addFunction(updateIndices, "viii"));
     }
   }, [module]); // Run once when the component mounts
 
   // On 'run' click, call binary search
   const run = async () => {
-    if (module) {
+    if (module && updateIndicesPtr) {
       // Allocate space for the array. 4 is the size, in bytes, of an integer
-      const inputPtr = await window._malloc(4 * inputValue.length);
+      const inputPtr = await module._malloc(4 * inputValue.length);
       await module.HEAP32.set(inputValue, inputPtr / 4);
       console.log(inputPtr);
 
