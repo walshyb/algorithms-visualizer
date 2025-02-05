@@ -7,7 +7,7 @@ EM_FLAGS := -s EXPORTED_RUNTIME_METHODS=ccall,addFunction -s EXPORTED_FUNCTIONS=
 SRC_DIR := wasm-lib
 
 # Output directory
-OUT_DIR := public/
+OUT_DIR := src/
 
 # Get list of .cpp files
 SRCS := $(shell find $(SRC_DIR) -name "*.cpp")

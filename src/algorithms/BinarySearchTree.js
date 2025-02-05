@@ -11,8 +11,6 @@ export default function BinarySearchTree({ module }) {
   const [selectedNodeIndex, setSelectedNodeIndex] = useState(-1);
   const [callbackPtr, setCallbackPtr] = useState(null);
 
-  console.log("selected", selectedNodeIndex);
-
   // TODO actually allow change and validate
   const handleInputChange = (inputEvent) => {
     const newInput = inputEvent.target.value.split(", ");
@@ -58,7 +56,7 @@ export default function BinarySearchTree({ module }) {
         targetValue={targetValue}
       />
 
-      <TreeFromArray array={inputValue} />
+      <TreeFromArray array={inputValue} selectedIndex={selectedNodeIndex} />
 
       <input
         type="submit"

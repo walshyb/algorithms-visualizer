@@ -1,6 +1,5 @@
 #include <emscripten.h>
 #include "datastructures/tree.h"
-#include <iostream>
 
 using namespace std;
 
@@ -17,8 +16,8 @@ extern "C" {
     Node* current = tree->root;
 
     while (current->children.size()) {
+      emscripten_sleep(1000);
       updateSelectedNode(current->index);
-      cout << current->value <<endl;
 
       if (current->value == target) {
         delete tree;
@@ -32,9 +31,10 @@ extern "C" {
       }
 
     }
+    emscripten_sleep(1000);
+    updateSelectedNode(current->index);
 
     delete tree;
-    updateSelectedNode(-1);
     return -1;
   }
 }

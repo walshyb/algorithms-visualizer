@@ -1,30 +1,35 @@
 import "./Tree.scss";
 
-export default function TreeFromArray({ array }) {
+// TODO don't need anymore?
+export default function TreeFromArray({ array, selectedIndex }) {
   const data = createBinaryTreeFromArray(array);
 
-  return Tree({ data: [data] });
+  return Tree({ data: [data], selectedIndex });
 }
 
-function Tree({ data }) {
+export function Tree({ data, selectedIndex }) {
   return (
     <ul className="tree">
       {data.map((node) => (
-        <TreeNode key={node.index} node={node} />
+        <TreeNode key={node.index} node={node} selectedIndex={selectedIndex} />
       ))}
     </ul>
   );
 }
 
-function TreeNode({ node }) {
+function TreeNode({ node, selectedIndex }) {
+  const className = node.index == selectedIndex ? "selected" : "";
   return (
     <li>
-      <span>{node.value}</span>
-      {node.children && <Tree data={node.children} />}
+      <span className={className}>{node.value}</span>
+      {node.children && (
+        <Tree data={node.children} selectedIndex={selectedIndex} />
+      )}
     </li>
   );
 }
 
+// TODO
 function createGenericTreeFromArray(array) {
   const data = {};
   const currentChildren = {};

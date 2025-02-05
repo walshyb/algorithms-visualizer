@@ -1,7 +1,6 @@
 #include <emscripten.h>
 #include <deque>
 #include "tree.h"
-#include <iostream>
 
 using namespace std;
 
@@ -25,6 +24,12 @@ Tree::Tree(int* input, int inputSize) {
 
       if (current->children.size() < 2) {
         current->children.push_back(new Node(i, num));
+        break;
+      }
+
+      // Add children to BFS queue
+      for (Node* child : current->children) {
+        bfs.push_back(child);
       }
     }
   }
