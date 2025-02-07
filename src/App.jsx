@@ -1,6 +1,7 @@
 import "./App.scss";
 import BinarySearchArray from "./algorithms/BinarySearchArray";
 import BinarySearchTree from "./algorithms/BinarySearchTree";
+import DFSTree from "./algorithms/DFSTree";
 import React, { useState, useEffect } from "react";
 import createModule from "./algorithms.js"; // Ensure correct path
 
@@ -25,6 +26,7 @@ function App() {
     <main>
       {module && <BinarySearchArray module={module} />}
       {module && <BinarySearchTree module={module} />}
+      {module && <DFSTree module={module} />}
     </main>
   );
 }

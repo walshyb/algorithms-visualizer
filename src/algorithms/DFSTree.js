@@ -4,8 +4,8 @@ import Inputs from "../Inputs";
 import { cppifyArray } from "../utils";
 import "./BinarySearchTree.scss";
 
-export default function BinarySearchTree({ module }) {
-  const [inputValue, setInputValue] = useState([3, 9, 20, 15, 7, 8, 0]);
+export default function DFSTree({ module }) {
+  const [inputValue, setInputValue] = useState([5, 3, 6, 2, 4, null, null, 1]);
   const [targetValue, setTargetValue] = useState(14);
   const [selectedNodeIndex, setSelectedNodeIndex] = useState(-1);
   const [updateSelectedNodeCallbackPtr, setUpdateSelectedNodeCallbackPtr] =
@@ -43,7 +43,7 @@ export default function BinarySearchTree({ module }) {
       const inputPtr = await module._malloc(4 * validArray.length);
       await module.HEAP32.set(validArray, inputPtr / 4);
 
-      await module._binary_search_tree(
+      await module._depth_first_search_tree(
         targetValue,
         inputPtr,
         validArray.length,
@@ -55,7 +55,7 @@ export default function BinarySearchTree({ module }) {
 
   return (
     <div>
-      <h2>Binary Search Tree</h2>
+      <h2>Depth First Search</h2>
       <Inputs
         handleInputChange={setInputValue}
         inputValue={inputValue}

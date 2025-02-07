@@ -2588,9 +2588,10 @@ var wasmImports = {
 };
 var wasmExports = await createWasm();
 var ___wasm_call_ctors = createExportWrapper('__wasm_call_ctors', 0);
-var _binary_search_tree = Module['_binary_search_tree'] = createExportWrapper('binary_search_tree', 5);
 var _binary_search_array = Module['_binary_search_array'] = createExportWrapper('binary_search_array', 4);
 var _free = Module['_free'] = createExportWrapper('free', 1);
+var _binary_search_tree = Module['_binary_search_tree'] = createExportWrapper('binary_search_tree', 5);
+var _depth_first_search_tree = Module['_depth_first_search_tree'] = createExportWrapper('depth_first_search_tree', 5);
 var ___getTypeName = createExportWrapper('__getTypeName', 1);
 var _fflush = createExportWrapper('fflush', 1);
 var _strerror = createExportWrapper('strerror', 1);
