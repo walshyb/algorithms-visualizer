@@ -16,7 +16,7 @@ Tree::Tree(int* input, int inputSize) {
   for (int i = 1; i < inputSize; i++) {
     int num = input[i];
 
-    deque<Node*> bfs = {root};
+    deque<Node*> bfs = { root };
 
     while (bfs.size()) {
       Node* current = bfs.front();
