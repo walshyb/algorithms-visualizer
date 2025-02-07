@@ -23,7 +23,11 @@ Tree::Tree(int* input, int inputSize) {
       bfs.pop_front();
 
       if (current->children.size() < 2) {
-        current->children.push_back(new Node(i, num));
+        if (num == INT_MIN) {
+          current->children.push_back(nullptr);
+        } else {
+          current->children.push_back(new Node(i, num));
+        }
         break;
       }
 

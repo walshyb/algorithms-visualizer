@@ -19,26 +19,19 @@ export function Tree({ data, selectedIndex }) {
 
 function TreeNode({ node, selectedIndex }) {
   const className = node.index == selectedIndex ? "selected" : "";
+
   return (
     <li>
-      <span className={className}>{node.value}</span>
-      {node.children && (
-        <Tree data={node.children} selectedIndex={selectedIndex} />
+      {node.value !== null && (
+        <>
+          <span className={className}>{node.value}</span>
+          {node.children && (
+            <Tree data={node.children} selectedIndex={selectedIndex} />
+          )}
+        </>
       )}
     </li>
   );
-}
-
-// TODO
-function createGenericTreeFromArray(array) {
-  const data = {};
-  const currentChildren = {};
-
-  array.forEach((value, index) => {
-    if (!value) return; // allow nulls
-
-    const level = index;
-  });
 }
 
 /**

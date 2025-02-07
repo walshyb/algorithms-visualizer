@@ -9,19 +9,20 @@ extern "C" {
    *
    * Calls JS func that highlights current index
    *
-   * @returns 0 if no errors
+   * @returns 1 if found, 0 if not found
    */
-  int binary_search_tree(int target, int* input, int inputSize, void (*updateSelectedNode)(int)) {
+  int binary_search_tree(int target, int* input, int inputSize, void (*updateSelectedNode)(int), void (*setSearchResult)(int)) {
     Tree *tree = new Tree(input, inputSize);
     Node* current = tree->root;
 
-    while (current->children.size()) {
+    while (current) {
       emscripten_sleep(1000);
       updateSelectedNode(current->index);
 
       if (current->value == target) {
         delete tree;
-        return 0;
+        setSearchResult(1);
+        return 1;
       }
 
       if (current->value < target) {
@@ -35,6 +36,7 @@ extern "C" {
     updateSelectedNode(current->index);
 
     delete tree;
-    return -1;
+    setSearchResult(0);
+    return 0;
   }
 }

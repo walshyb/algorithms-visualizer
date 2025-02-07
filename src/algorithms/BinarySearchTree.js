@@ -1,15 +1,28 @@
 import { useState, useEffect } from "react";
 import TreeFromArray from "../datastructures/Tree";
 import Inputs from "../Inputs";
+import { cppifyArray } from "../utils";
 import "./BinarySearchTree.scss";
 
 export default function BinarySearchTree({ module }) {
   const [inputValue, setInputValue] = useState([
-    8, 4, 12, 2, 6, 10, 14, 1, 3, 5, 7, 9, 11, 13, 15,
+    //3, 9, 20, 15, 7, 8, 0,
+    //3,1,4,null,2
+    5,
+    3,
+    6,
+    2,
+    4,
+    null,
+    null,
+    1,
   ]);
   const [targetValue, setTargetValue] = useState(14);
   const [selectedNodeIndex, setSelectedNodeIndex] = useState(-1);
-  const [callbackPtr, setCallbackPtr] = useState(null);
+  const [updateSelectedNodeCallbackPtr, setUpdateSelectedNodeCallbackPtr] =
+    useState(null);
+  const [updateSearchResultPtr, setUpdateSearchResultPtr] = useState(null);
+  const [searchResult, setSearchResult] = useState(-1);
 
   // TODO actually allow change and validate
   const handleInputChange = (inputEvent) => {
@@ -26,7 +39,10 @@ export default function BinarySearchTree({ module }) {
     // Create and set pointer to setInputValue function
     if (module) {
       // TODO: use ccall
-      setCallbackPtr(module.addFunction(setSelectedNodeIndex, "vi"));
+      setUpdateSelectedNodeCallbackPtr(
+        module.addFunction(setSelectedNodeIndex, "vi"),
+      );
+      setUpdateSearchResultPtr(module.addFunction(setSearchResult, "vi"));
     }
   }, [module]); // Run once when the component mounts
 
@@ -34,14 +50,16 @@ export default function BinarySearchTree({ module }) {
   const run = async () => {
     if (module) {
       // Allocate space for the array. 4 is the size, in bytes, of an integer
-      const inputPtr = await module._malloc(4 * inputValue.length);
-      await module.HEAP32.set(inputValue, inputPtr / 4);
+      const validArray = cppifyArray(inputValue);
+      const inputPtr = await module._malloc(4 * validArray.length);
+      await module.HEAP32.set(validArray, inputPtr / 4);
 
       await module._binary_search_tree(
         targetValue,
         inputPtr,
-        inputValue.length,
-        callbackPtr,
+        validArray.length,
+        updateSelectedNodeCallbackPtr,
+        updateSearchResultPtr,
       );
     }
   };
@@ -54,17 +72,12 @@ export default function BinarySearchTree({ module }) {
         inputValue={inputValue}
         handleTargetChange={setTargetValue}
         targetValue={targetValue}
+        targetNotFound={searchResult === 0}
       />
 
       <TreeFromArray array={inputValue} selectedIndex={selectedNodeIndex} />
 
-      <input
-        type="submit"
-        value="Run"
-        onClick={() => {
-          run();
-        }}
-      />
+      <input type="submit" value="Run" onClick={run} />
     </div>
   );
 }
