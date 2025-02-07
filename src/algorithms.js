@@ -27,7 +27,7 @@ Module['ready'] = new Promise((resolve, reject) => {
   readyPromiseResolve = resolve;
   readyPromiseReject = reject;
 });
-["_malloc","_free","_binary_search_array","_binary_search_tree","_depth_first_search_tree","_memory","___indirect_function_table","onRuntimeInitialized"].forEach((prop) => {
+["_malloc","_free","_binary_search_array","_binary_search_tree","_depth_first_search_tree","_breadth_first_search_tree","_memory","___indirect_function_table","onRuntimeInitialized"].forEach((prop) => {
   if (!Object.getOwnPropertyDescriptor(Module['ready'], prop)) {
     Object.defineProperty(Module['ready'], prop, {
       get: () => abort('You are getting ' + prop + ' on the Promise object, instead of the instance. Use .then() to get called back with the instance, see the MODULARIZE docs in src/settings.js'),
@@ -2675,6 +2675,7 @@ var _binary_search_array = Module['_binary_search_array'] = createExportWrapper(
 var _free = Module['_free'] = createExportWrapper('free');
 var _binary_search_tree = Module['_binary_search_tree'] = createExportWrapper('binary_search_tree');
 var _depth_first_search_tree = Module['_depth_first_search_tree'] = createExportWrapper('depth_first_search_tree');
+var _breadth_first_search_tree = Module['_breadth_first_search_tree'] = createExportWrapper('breadth_first_search_tree');
 var _fflush = createExportWrapper('fflush');
 var _malloc = Module['_malloc'] = createExportWrapper('malloc');
 var _emscripten_stack_init = () => (_emscripten_stack_init = wasmExports['emscripten_stack_init'])();

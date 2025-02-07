@@ -1,6 +1,7 @@
 #include <emscripten.h>
 #include "datastructures/tree.h"
 #include <stack>
+#include <queue>
 
 using namespace std;
 
@@ -73,9 +74,48 @@ extern "C" {
         return 1;
       }
 
+      // Add node children to stack
+      // Add in reverse order to search favoring left nodes
+      for (auto it = current->children.rbegin(); it != current->children.rend(); ++it) {
+        if (*it != nullptr) 
+          s.push(*it);
+      }
+
+    }
+
+    setSearchResult(0);
+    delete tree;
+    return 0;
+  }
+
+  int breadth_first_search_tree(
+      int target,
+      int* input,
+      int inputSize,
+      void (*updateSelectedNode)(int),
+      void (*setSearchResult)(int))
+  {
+    Tree *tree = new Tree(input, inputSize);
+    Node* root = tree->root;
+    queue<Node*> bfs;
+    bfs.push(root);
+
+    while (!bfs.empty()) {
+      Node* current = bfs.front();
+      bfs.pop();
+      emscripten_sleep(1000);
+      updateSelectedNode(current->index);
+
+
+      if (current->value == target) {
+        setSearchResult(1);
+        delete tree;
+        return 1;
+      }
+
       for (Node* child : current->children) {
         if (child != nullptr) 
-          s.push(child);
+          bfs.push(child);
       }
     }
 

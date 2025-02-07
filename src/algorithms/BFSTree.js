@@ -3,9 +3,9 @@ import TreeFromArray from "../datastructures/Tree";
 import Inputs from "../Inputs";
 import { cppifyArray } from "../utils";
 
-export default function DFSTree({ module }) {
-  const [inputValue, setInputValue] = useState([1, 2, 5, 6, 3, 7, 9, 4, 8]);
-  const [targetValue, setTargetValue] = useState(9);
+export default function BFSTree({ module }) {
+  const [inputValue, setInputValue] = useState([5, 3, 6, 2, 4, null, null, 1]);
+  const [targetValue, setTargetValue] = useState(1);
   const [selectedNodeIndex, setSelectedNodeIndex] = useState(-1);
   const [updateSelectedNodeCallbackPtr, setUpdateSelectedNodeCallbackPtr] =
     useState(null);
@@ -42,7 +42,7 @@ export default function DFSTree({ module }) {
       const inputPtr = await module._malloc(4 * validArray.length);
       await module.HEAP32.set(validArray, inputPtr / 4);
 
-      await module._depth_first_search_tree(
+      await module._breadth_first_search_tree(
         targetValue,
         inputPtr,
         validArray.length,
@@ -54,7 +54,7 @@ export default function DFSTree({ module }) {
 
   return (
     <div>
-      <h2>Depth First Search</h2>
+      <h2>Breadth First Search</h2>
       <Inputs
         handleInputChange={setInputValue}
         inputValue={inputValue}
