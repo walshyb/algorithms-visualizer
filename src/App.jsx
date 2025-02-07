@@ -1,8 +1,6 @@
 import "./App.scss";
 import BinarySearchArray from "./algorithms/BinarySearchArray";
-import BinarySearchTree from "./algorithms/BinarySearchTree";
-import DFSTree from "./algorithms/DFSTree";
-import BFSTree from "./algorithms/BFSTree";
+import TreeSearch from "./algorithms/TreeSearch";
 import React, { useState, useEffect } from "react";
 import createModule from "./algorithms.js"; // Ensure correct path
 
@@ -26,9 +24,23 @@ function App() {
   return (
     <main>
       {module && <BinarySearchArray module={module} />}
-      {module && <BinarySearchTree module={module} />}
-      {module && <DFSTree module={module} />}
-      {module && <BFSTree module={module} />}
+      {module && <TreeSearch module={module} strategy="Binary" target={3} />}
+      {module && (
+        <TreeSearch
+          module={module}
+          strategy="Depth First"
+          input={[1, 2, 5, 6, 3, 7, 9, 4, 8]}
+          target={9}
+        />
+      )}
+      {module && (
+        <TreeSearch
+          module={module}
+          strategy="Breadth First"
+          input={[5, 3, 6, 2, 4, null, null, 1]}
+          target={1}
+        />
+      )}
     </main>
   );
 }
