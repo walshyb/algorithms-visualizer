@@ -8,10 +8,14 @@ export default function TreeSearch({ module, strategy, input, target }) {
     input || [8, 4, 12, 2, 6, 10, 14, 1, 3, 5, 7, 9, 11, 13, 15],
   );
   const [targetValue, setTargetValue] = useState(target || 14);
+
+  // Node highlighting-related state items
   const [selectedNodeIndex, setSelectedNodeIndex] = useState(-1);
   const [updateSelectedNodeCallbackPtr, setUpdateSelectedNodeCallbackPtr] =
     useState(null);
   const [updateSearchResultPtr, setUpdateSearchResultPtr] = useState(null);
+
+  // -1 is initial, 0 is not found, 1 is found
   const [searchResult, setSearchResult] = useState(-1);
 
   // TODO actually allow change and validate
