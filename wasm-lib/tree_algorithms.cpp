@@ -22,7 +22,7 @@ extern "C" {
     Tree *tree = new Tree(input, inputSize);
     Node* current = tree->root;
 
-    while (current != nullptr) {
+    while (current) {
       emscripten_sleep(1000);
       updateSelectedNode(current->index);
 
@@ -33,11 +33,12 @@ extern "C" {
       }
 
       if (current->value < target) {
+        if (current->children.size() < 2) break;
         current = current->children[1];
       } else {
+        if (current->children.size() < 2) break;
         current = current->children[0];
       }
-
     }
     emscripten_sleep(1000);
     updateSelectedNode(current->index);

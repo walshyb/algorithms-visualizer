@@ -5,7 +5,9 @@ import { cppifyArray } from "../utils";
 import "./BinarySearchTree.scss";
 
 export default function BinarySearchTree({ module }) {
-  const [inputValue, setInputValue] = useState([3, 9, 20, 15, 7, 8, 0]);
+  const [inputValue, setInputValue] = useState([
+    8, 4, 12, 2, 6, 10, 14, 1, 3, 5, 7, 9, 11, 13, 15,
+  ]);
   const [targetValue, setTargetValue] = useState(14);
   const [selectedNodeIndex, setSelectedNodeIndex] = useState(-1);
   const [updateSelectedNodeCallbackPtr, setUpdateSelectedNodeCallbackPtr] =
