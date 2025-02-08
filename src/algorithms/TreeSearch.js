@@ -54,6 +54,8 @@ export default function TreeSearch({ module, strategy, input, target }) {
       const inputPtr = await module._malloc(4 * validArray.length);
       await module.HEAP32.set(validArray, inputPtr / 4);
 
+      console.log("Input Pointer: ", strategy, inputPtr);
+
       await strategyAlgorithmMap[strategy](
         targetValue,
         inputPtr,
@@ -61,6 +63,8 @@ export default function TreeSearch({ module, strategy, input, target }) {
         updateSelectedNodeCallbackPtr,
         updateSearchResultPtr,
       );
+
+      console.log(strategy, "complete");
     }
   };
 

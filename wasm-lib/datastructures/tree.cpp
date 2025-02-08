@@ -1,4 +1,3 @@
-#include <emscripten.h>
 #include <deque>
 #include "tree.h"
 
@@ -11,7 +10,7 @@ using namespace std;
 Tree::Tree(int* input, int inputSize) {
   if (!root) {
     root = new Node(0, input[0]);
-  }
+  } 
 
   for (int i = 1; i < inputSize; i++) {
     int num = input[i];

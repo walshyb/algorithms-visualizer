@@ -2,7 +2,7 @@
 
 class Tree {
   public:
-    Node* root;
+    Node* root = nullptr;
     Tree(int* input, int inputSizes);
     ~Tree();
 };

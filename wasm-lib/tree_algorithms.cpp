@@ -28,6 +28,7 @@ extern "C" {
       updateSelectedNode(current->index);
 
       if (current->value == target) {
+        free(input);
         delete tree;
         setSearchResult(1);
         return 1;
@@ -44,6 +45,7 @@ extern "C" {
     emscripten_sleep(1000);
     updateSelectedNode(current->index);
 
+    free(input);
     delete tree;
     setSearchResult(0);
     return 0;
@@ -70,6 +72,7 @@ extern "C" {
 
       if (current->value == target) {
         setSearchResult(1);
+        free(input);
         delete tree;
         return 1;
       }
@@ -84,6 +87,7 @@ extern "C" {
     }
 
     setSearchResult(0);
+    free(input);
     delete tree;
     return 0;
   }
@@ -109,6 +113,7 @@ extern "C" {
 
       if (current->value == target) {
         setSearchResult(1);
+        free(input);
         delete tree;
         return 1;
       }
@@ -120,6 +125,7 @@ extern "C" {
     }
 
     setSearchResult(0);
+    free(input);
     delete tree;
     return 0;
   }
