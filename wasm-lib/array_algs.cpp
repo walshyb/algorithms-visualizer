@@ -1,4 +1,8 @@
 #include <emscripten.h>
+#include <set>
+#include <vector>
+
+using namespace std;
 
 extern "C" {
   /**
@@ -38,5 +42,20 @@ extern "C" {
     updateIndicies(low, high, -1);
     free(input);
     return -1;
+  }
+
+  /**
+   * Search a 2D array via DFS
+   *
+   * @param target
+   * @param input 2D array of numbers
+   * @return 1 if found, 0 if not
+   */
+  int dfs_array(
+      int target,
+      int* input,
+      void (*updateSelectedIndex)(int),
+      void (*setSearchResult)(int)) {
+    set<int> seen;
   }
 }
