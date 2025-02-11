@@ -56,6 +56,6 @@ extern "C" {
       int* input,
       void (*updateSelectedIndex)(int),
       void (*setSearchResult)(int)) {
-    set<int> seen;
+    set<pair<int,int>> seen;
   }
 }
