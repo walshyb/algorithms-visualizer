@@ -40,3 +40,11 @@ npm run start
 - [ ] Input arrays can't be modified via input field
 - [ ] Arrays exceed screenwidth on screens < 650px
 - [ ] Trees exceed screenwidth on screens < 420px
+
+## Deploying
+
+This is hosted as a subdomain on my main portfolio website, using GitHub pages. The static files are on the `deploy` branch.
+
+```
+npm run deploy
+```
