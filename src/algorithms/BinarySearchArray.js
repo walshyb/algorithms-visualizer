@@ -1,8 +1,9 @@
 import { useState, useEffect } from "react";
 import Inputs from "../Inputs";
 import "./BinarySearchArray.scss";
+import useAlgorithmsModule from "../useAlgorithmsModule";
 
-export default function BinarySearch({ module }) {
+export default function BinarySearch() {
   const [inputValue, setInputValue] = useState([
     2, 4, 9, 10, 20, 50, 100, 500, 600, 800, 1000, 9000,
   ]);
@@ -11,6 +12,7 @@ export default function BinarySearch({ module }) {
   const [lowIndex, setLowIndex] = useState(undefined);
   const [highIndex, setHighIndex] = useState(undefined);
   const [midIndex, setMidIndex] = useState(undefined);
+  const module = useAlgorithmsModule();
 
   /**
    * Update input on change event

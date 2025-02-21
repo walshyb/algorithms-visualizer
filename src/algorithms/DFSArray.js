@@ -1,8 +1,9 @@
 import { useState, useEffect } from "react";
 import Inputs from "../Inputs";
 import "./BinarySearchArray.scss";
+import { useAlgorithmsModule } from "../useAlgorithmsModule";
 
-export default function DFSArray({ module }) {
+export default function DFSArray() {
   const [inputValue, setInputValue] = useState([
     [34, 72, 15, 89, 53],
     [22, 41, 67, 90, 12],
@@ -12,6 +13,7 @@ export default function DFSArray({ module }) {
   ]);
   const [targetValue, setTargetValue] = useState(50);
   const [updateIndicesPtr, setUpdateIndiciesPtr] = useState(null);
+  const module = useAlgorithmsModule();
   const [selectedIndex, setSelectedIndex] = useState(-1);
   const [seenIndicies, setSeenIndicies] = useState([]);
 

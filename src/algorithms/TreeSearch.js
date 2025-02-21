@@ -2,8 +2,9 @@ import { useState, useEffect } from "react";
 import TreeFromArray from "../datastructures/Tree";
 import Inputs from "../Inputs";
 import { cppifyArray } from "../utils";
+import useAlgorithmsModule from "../useAlgorithmsModule";
 
-export default function TreeSearch({ module, strategy, input, target }) {
+export default function TreeSearch({ strategy, input, target }) {
   const [inputValue, setInputValue] = useState(
     input || [8, 4, 12, 2, 6, 10, 14, 1, 3, 5, 7, 9, 11, 13, 15],
   );
@@ -17,6 +18,7 @@ export default function TreeSearch({ module, strategy, input, target }) {
 
   // -1 is initial, 0 is not found, 1 is found
   const [searchResult, setSearchResult] = useState(-1);
+  const module = useAlgorithmsModule();
 
   // TODO actually allow change and validate
   const handleInputChange = (inputEvent) => {
