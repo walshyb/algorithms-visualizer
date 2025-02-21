@@ -16,9 +16,8 @@
     span {
       display: inline-block;
       padding: 5px 10px;
-      border: 1px solid #000;
+      border: 1px solid white;
       border-radius: 5px;
-      background: #fff;
       &.selected {
         background-color: blue;
       }
@@ -32,7 +31,7 @@
         top: 0;
         width: 50%;
         height: 10px;
-        border-top: 1px solid #000;
+        border-top: 1px solid white;
         left: 50%;
       }
     }
@@ -45,7 +44,7 @@
         top: 0;
         width: 50%;
         height: 10px;
-        border-top: 1px solid #000;
+        border-top: 1px solid white;
         right: 50%;
       }
     }
@@ -58,12 +57,12 @@
 
     // Vertical child branch on left nodes
     &:first-child::before {
-      border-left: 1px solid #000;
+      border-left: 1px solid white;
     }
 
     // Vertical child branch on right nodes
     &:last-child::after {
-      border-right: 1px solid #000;
+      border-right: 1px solid white;
     }
 
     ul {
@@ -79,7 +78,7 @@
         left: 50%;
         width: 0;
         height: 10px;
-        border-left: 1px solid #000;
+        border-left: 1px solid white;
       }
     }
   }

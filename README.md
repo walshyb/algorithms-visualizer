@@ -1,70 +1,42 @@
-# Getting Started with Create React App
+# Algorithms Visualizer
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A simple algorithm visualizer built with React and C++, compiled via Emscripten into WebAssembly! The algorithm execution is written in C++ and rendering (the visualization) is done in React. I decided to write the algorithm logic in C++ because I wanted more practice with C++ and more practical experience with using WebAssembly (Wasm) modules.
 
-## Available Scripts
+This is still a work in progress! I will be adding more algorithms over time. It's not the most mobile-friendly currently; I'm focusing on speed and functionality right now, as I have a few projects that I'm working on in parallel.
 
-In the project directory, you can run:
+## Requirements
 
-### `npm start`
+- Node: `21.x.x`
+- Emscripten: `^3.1.51`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Running
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+```bash
+# Install node deps
+npm install
 
-### `npm test`
+# Build wasm module (only needed if changes are made,
+# as wasm module is checked to repo)
+make
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+# Run the project locally, on port 3000 by default
+npm run start
+```
 
-### `npm run build`
+## Roadmap
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- [x] Binary Search Array
+- [x] Binary Search Tree
+- [x] Depth First Search (DFS) Tree
+- [x] Breadth First Search (BFS) Tree
+- [ ] 2D Array Binary Search
+- [ ] 2D Array DFS
+- [ ] 2D Array BFS
+- [ ] Dijkstra's
+- [ ] A\* search
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Known Issues
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- [ ] Input arrays can't be modified via input field
+- [ ] Arrays exceed screenwidth on screens < 650px
+- [ ] Trees exceed screenwidth on screens < 420px
