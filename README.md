@@ -43,7 +43,9 @@ npm run start
 
 ## Deploying
 
-This is hosted as a subdomain on my main portfolio website, using GitHub pages. The static files are on the `deploy` branch.
+This is hosted as a path on my main portfolio website, using GitHub pages. The static files are on the `deploy` branch.
+
+The `.env.production` file updates the `PUBLIC_URL` in the build so all of this project's assets are referenced within the respective subpath.
 
 ```
 npm run deploy
