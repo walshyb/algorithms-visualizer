@@ -55,7 +55,7 @@ export default function DFSArray() {
   };
 
   return (
-    <div className="binary-search">
+    <section className="binary-search">
       <h2>DFS Array</h2>
 
       <Inputs
@@ -72,6 +72,6 @@ export default function DFSArray() {
           run();
         }}
       />
-    </div>
+    </section>
   );
 }

@@ -10,24 +10,27 @@ export default function Inputs({
   const targetClass = targetNotFound ? "not-found" : "";
 
   return (
-    <div>
-      <label htmlFor="input">Input: </label>
-      <input
-        type="text"
-        name="input"
-        value={inputValue}
-        onChange={handleInputChange}
-      />
+    <div className="inputs">
+      <div className="input">
+        <label htmlFor="input">Input: </label>
+        <input
+          type="text"
+          name="input"
+          value={inputValue}
+          onChange={handleInputChange}
+        />
+      </div>
 
-      <br />
-      <label htmlFor="target">Target: </label>
-      <input
-        type="text"
-        name="target"
-        value={targetValue}
-        className={targetClass}
-        onChange={(e) => handleTargetChange(e.target.value)}
-      />
+      <div className="target">
+        <label htmlFor="target">Target: </label>
+        <input
+          type="text"
+          name="target"
+          value={targetValue}
+          className={targetClass}
+          onChange={(e) => handleTargetChange(e.target.value)}
+        />
+      </div>
     </div>
   );
 }

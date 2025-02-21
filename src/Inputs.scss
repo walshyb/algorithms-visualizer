@@ -1,3 +1,16 @@
-.not-found {
-  background-color: pink;
+.inputs {
+  @media only screen and (width >= 720px) {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .target {
+    @media only screen and (width >= 720px) {
+      width: 30%;
+      padding-left: 5px;
+    }
+    .not-found {
+      background-color: pink;
+    }
+  }
 }

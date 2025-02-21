@@ -71,7 +71,7 @@ export default function TreeSearch({ strategy, input, target }) {
   };
 
   return (
-    <div>
+    <section>
       <h2>{strategy} Search</h2>
       <Inputs
         handleInputChange={setInputValue}
@@ -84,6 +84,6 @@ export default function TreeSearch({ strategy, input, target }) {
       <TreeFromArray array={inputValue} selectedIndex={selectedNodeIndex} />
 
       <input type="submit" value="Run" onClick={run} />
-    </div>
+    </section>
   );
 }

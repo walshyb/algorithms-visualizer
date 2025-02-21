@@ -58,7 +58,7 @@ export default function BinarySearch() {
   };
 
   return (
-    <div className="binary-search">
+    <section className="binary-search">
       <h2>Binary Search Array</h2>
 
       <Inputs
@@ -90,6 +90,6 @@ export default function BinarySearch() {
           run();
         }}
       />
-    </div>
+    </section>
   );
 }
