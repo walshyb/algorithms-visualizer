@@ -29,6 +29,7 @@ npm run start
 - [x] Binary Search Tree
 - [x] Depth First Search (DFS) Tree
 - [x] Breadth First Search (BFS) Tree
+- [ ] Make algorithm result more clear
 - [ ] 2D Array Binary Search
 - [ ] 2D Array DFS
 - [ ] 2D Array BFS
