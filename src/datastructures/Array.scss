@@ -3,6 +3,20 @@
   list-style: none;
   padding-left: 0;
 
+  &.binary-search {
+    .low {
+      background-color: darkgoldenrod;
+    }
+
+    .high {
+      background-color: darkred;
+    }
+
+    .mid {
+      background-color: darkblue;
+    }
+  }
+
   li {
     border: 1px solid black;
     padding: 5px;

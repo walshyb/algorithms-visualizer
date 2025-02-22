@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import Inputs from "../Inputs";
-import "./BinarySearchArray.scss";
 import useAlgorithmsModule from "../useAlgorithmsModule";
 import Array from "../datastructures/Array";
 
