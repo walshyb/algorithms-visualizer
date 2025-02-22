@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import Inputs from "../Inputs";
 import "./BinarySearchArray.scss";
 import useAlgorithmsModule from "../useAlgorithmsModule";
+import Array from "../datastructures/Array";
 
 export default function BinarySearch() {
   const [inputValue, setInputValue] = useState([
@@ -68,20 +69,12 @@ export default function BinarySearch() {
         targetValue={targetValue}
       />
 
-      <ul className="array binary-search">
-        {inputValue.map((value, index) => {
-          let className = "";
-          if (index === lowIndex) className = "low";
-          else if (index === highIndex) className = "high";
-          else if (index === midIndex) className = "mid";
-
-          return (
-            <li key={value} className={className}>
-              {value}
-            </li>
-          );
-        })}
-      </ul>
+      <Array
+        input={inputValue}
+        lowIndex={lowIndex}
+        midIndex={midIndex}
+        highIndex={highIndex}
+      />
 
       <input
         type="submit"
