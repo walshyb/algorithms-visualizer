@@ -7,7 +7,7 @@ export default function BinarySearch() {
   const [inputValue, setInputValue] = useState([
     2, 4, 9, 10, 20, 50, 100, 500, 600, 800, 1000, 9000,
   ]);
-  const [targetValue, setTargetValue] = useState(50);
+  const [targetValue, setTargetValue] = useState(1000);
   const [updateIndicesPtr, setUpdateIndiciesPtr] = useState(null);
   const [lowIndex, setLowIndex] = useState(undefined);
   const [highIndex, setHighIndex] = useState(undefined);
