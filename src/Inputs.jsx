@@ -1,13 +1,40 @@
 import "./Inputs.scss";
 
 export default function Inputs({
-  handleInputChange,
-  handleTargetChange,
-  inputValue,
+  textValue,
+  setTextValue,
+  setInputValue,
   targetValue,
   targetNotFound,
+  setTarget,
 }) {
   const targetClass = targetNotFound ? "not-found" : "";
+
+  const handleTextValueChange = (event) => {
+    const textValue = event.target.value;
+
+    setTextValue(textValue);
+
+    // Loop through input and if it's valid,
+    // update the value corresponding to the datastructure render
+
+    const newInput = textValue.trim().replace(/,$/, "").split(",");
+    let valid = true;
+
+    for (const [index, value] of newInput.entries()) {
+      const parsedVal = parseInt(value);
+
+      // TODO: indicate input is invalid
+      if (isNaN(parsedVal)) {
+        valid = false;
+        break;
+      }
+
+      newInput[index] = parseInt(value);
+    }
+
+    if (valid) setInputValue(newInput);
+  };
 
   return (
     <div className="inputs">
@@ -16,8 +43,8 @@ export default function Inputs({
         <input
           type="text"
           name="input"
-          value={inputValue}
-          onChange={handleInputChange}
+          value={textValue}
+          onChange={handleTextValueChange}
         />
       </div>
 
@@ -28,7 +55,7 @@ export default function Inputs({
           name="target"
           value={targetValue}
           className={targetClass}
-          onChange={(e) => handleTargetChange(e.target.value)}
+          onChange={(e) => setTarget(e.target.value)}
         />
       </div>
     </div>

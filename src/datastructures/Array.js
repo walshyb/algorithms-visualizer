@@ -1,3 +1,4 @@
+import "./Array.scss";
 /**
  * @params {number[]} input
  * @params {number} [lowIndex]

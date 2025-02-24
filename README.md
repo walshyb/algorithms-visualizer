@@ -25,6 +25,8 @@ npm run start
 
 ## Roadmap
 
+### Algorithms
+
 - [x] Binary Search Array
 - [x] Binary Search Tree
 - [x] Depth First Search (DFS) Tree
@@ -36,9 +38,14 @@ npm run start
 - [ ] Dijkstra's
 - [ ] A\* search
 
+### Enhancements
+
+- [ ] Can change speed of algorithm visualization steps
+
 ## Known Issues
 
-- [ ] Input arrays can't be modified via input field
+- [x] Input arrays can't be modified via input field
+- [ ] Can modify visual input while algorithm is running
 - [ ] Arrays exceed screenwidth on screens < 650px
 - [ ] Trees exceed screenwidth on screens < 420px
 

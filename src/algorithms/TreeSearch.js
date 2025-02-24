@@ -8,6 +8,7 @@ export default function TreeSearch({ strategy, input, target }) {
   const [inputValue, setInputValue] = useState(
     input || [8, 4, 12, 2, 6, 10, 14, 1, 3, 5, 7, 9, 11, 13, 15],
   );
+  const [textValue, setTextValue] = useState(inputValue.toString());
   const [targetValue, setTargetValue] = useState(target || 14);
 
   // Node highlighting-related state items
@@ -19,17 +20,6 @@ export default function TreeSearch({ strategy, input, target }) {
   // -1 is initial, 0 is not found, 1 is found
   const [searchResult, setSearchResult] = useState(-1);
   const module = useAlgorithmsModule();
-
-  // TODO actually allow change and validate
-  const handleInputChange = (inputEvent) => {
-    const newInput = inputEvent.target.value.split(", ");
-
-    newInput.forEach((value, index, array) => {
-      array[index] = parseInt(value);
-    });
-
-    setInputValue(newInput);
-  };
 
   useEffect(() => {
     // Create and set pointer to setInputValue function
@@ -56,8 +46,6 @@ export default function TreeSearch({ strategy, input, target }) {
       const inputPtr = await module._malloc(4 * validArray.length);
       await module.HEAP32.set(validArray, inputPtr / 4);
 
-      console.log("Input Pointer: ", strategy, inputPtr);
-
       await strategyAlgorithmMap[strategy](
         targetValue,
         inputPtr,
@@ -65,8 +53,6 @@ export default function TreeSearch({ strategy, input, target }) {
         updateSelectedNodeCallbackPtr,
         updateSearchResultPtr,
       );
-
-      console.log(strategy, "complete");
     }
   };
 
@@ -74,9 +60,10 @@ export default function TreeSearch({ strategy, input, target }) {
     <section>
       <h2>{strategy} Search</h2>
       <Inputs
-        handleInputChange={setInputValue}
-        inputValue={inputValue}
-        handleTargetChange={setTargetValue}
+        setTextValue={setTextValue}
+        setInputValue={setInputValue}
+        textValue={textValue}
+        setTarget={setTargetValue}
         targetValue={targetValue}
         targetNotFound={searchResult === 0}
       />

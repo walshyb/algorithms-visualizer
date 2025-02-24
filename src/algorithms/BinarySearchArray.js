@@ -7,23 +7,13 @@ export default function BinarySearch() {
   const [inputValue, setInputValue] = useState([
     2, 4, 9, 10, 20, 50, 100, 500, 600, 800, 1000, 9000,
   ]);
+  const [textValue, setTextValue] = useState(inputValue.toString());
   const [targetValue, setTargetValue] = useState(1000);
   const [updateIndicesPtr, setUpdateIndiciesPtr] = useState(null);
   const [lowIndex, setLowIndex] = useState(undefined);
   const [highIndex, setHighIndex] = useState(undefined);
   const [midIndex, setMidIndex] = useState(undefined);
   const module = useAlgorithmsModule();
-
-  /**
-   * Update input on change event
-   */
-  const handleInputChange = (inputEvent) => {
-    const newInput = inputEvent.target.value.split(", ");
-    newInput.forEach((value, index, array) => {
-      array[index] = parseInt(value);
-    });
-    setInputValue(newInput);
-  };
 
   function updateIndices(low, high, mid) {
     setLowIndex(low);
@@ -35,7 +25,6 @@ export default function BinarySearch() {
     // Create and set pointer to setInputValue function
     // TODO remove some of this defensive checking?
     if (module && module.addFunction && !updateIndicesPtr) {
-      console.log("running");
       setUpdateIndiciesPtr(module.addFunction(updateIndices, "viii"));
     }
   }, [module]); // Run once when the component mounts
@@ -62,9 +51,10 @@ export default function BinarySearch() {
       <h2>Binary Search Array</h2>
 
       <Inputs
-        handleInputChange={handleInputChange}
-        inputValue={inputValue}
-        handleTargetChange={setTargetValue}
+        setTextValue={setTextValue}
+        setInputValue={setInputValue}
+        textValue={textValue}
+        setTarget={setTargetValue}
         targetValue={targetValue}
       />
 
