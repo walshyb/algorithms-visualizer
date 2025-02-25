@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import Inputs from "../Inputs";
-import "./BinarySearchArray.scss";
-import { useAlgorithmsModule } from "../useAlgorithmsModule";
+import useAlgorithmsModule from "../useAlgorithmsModule";
+import Array2D from "../datastructures/Array2D";
 
 export default function DFSArray() {
   const [inputValue, setInputValue] = useState([
@@ -11,6 +11,7 @@ export default function DFSArray() {
     [95, 47, 23, 59, 14],
     [10, 64, 37, 81, 99],
   ]);
+  const [textValue, setTextValue] = useState(JSON.stringify(inputValue));
   const [targetValue, setTargetValue] = useState(50);
   const [updateIndicesPtr, setUpdateIndiciesPtr] = useState(null);
   const module = useAlgorithmsModule();
@@ -59,11 +60,14 @@ export default function DFSArray() {
       <h2>DFS Array</h2>
 
       <Inputs
-        handleInputChange={handleInputChange}
-        inputValue={inputValue}
-        handleTargetChange={setTargetValue}
+        setTextValue={setTextValue}
+        setInputValue={setInputValue}
+        textValue={textValue}
+        setTarget={setTargetValue}
         targetValue={targetValue}
       />
+
+      <Array2D input={inputValue} />
 
       <input
         type="submit"

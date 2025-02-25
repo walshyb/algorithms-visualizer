@@ -1,6 +1,7 @@
 import "./App.scss";
 import BinarySearchArray from "./algorithms/BinarySearchArray";
 import TreeSearch from "./algorithms/TreeSearch";
+import DFSArray from "./algorithms/DFSArray";
 
 function App() {
   return (
@@ -45,6 +46,14 @@ function App() {
       )}
       {module && (
         <TreeSearch
+          strategy="Breadth First"
+          input={[5, 3, 6, 2, 4, null, null, 1]}
+          target={1}
+        />
+      )}
+
+      {module && (
+        <DFSArray
           strategy="Breadth First"
           input={[5, 3, 6, 2, 4, null, null, 1]}
           target={1}

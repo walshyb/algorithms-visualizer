@@ -10,17 +10,12 @@ import Array from "./Array";
  * @params {number} [selectedIndex]
  *
  */
-export default function Array2D({
-  rowIndex,
-  colIndex,
-  input,
-  selectedIndex
-}) {
+export default function Array2D({ rowIndex, colIndex, input, selectedIndex }) {
   return (
-    { input.map(array => (
-      <Array
-        
-      />
-    )) }
+    <div className="array2d">
+      {input.map((array) => (
+        <Array input={array} />
+      ))}
+    </div>
   );
 }
